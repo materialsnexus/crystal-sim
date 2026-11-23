@@ -1,0 +1,16 @@
+{
+  "input_data": {
+    "control": {
+      "tprnfor": true,
+      "tstress": true
+    },
+    "system": {
+      "occupations": "smearing",
+      "wavefunction_cutoff_energy": 816,
+      "charge_density_cutoff_energy": 9796
+    }
+  },
+  "kpoints": {
+    "spacing_in_inverse_angstrom": 0.25
+  }
+}

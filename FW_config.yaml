@@ -1,0 +1,2 @@
+QUEUE_UPDATE_INTERVAL: 2
+ADD_USER_PACKAGES: ["crystal.helpers"]

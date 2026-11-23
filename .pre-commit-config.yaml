@@ -1,0 +1,65 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-added-large-files
+        args: ["--maxkb=5120"]
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: end-of-file-fixer
+        files: &source_file_types \.(src)$
+      - id: trailing-whitespace
+        files: *source_file_types
+      - id: check-merge-conflict
+      - id: name-tests-test
+        args: [--pytest-test-first]
+        types: [python]
+        exclude: ^tests/helpers/
+      - id: check-ast
+        types: [python]
+      - id: check-case-conflict
+      - id: check-docstring-first
+        types: [python]
+      - id: debug-statements
+        types: [python]
+      - id: check-symlinks
+      - id: detect-private-key
+      - id: no-commit-to-branch
+      - id: check-yaml
+        types: [yaml]
+      - id: check-toml
+        types: [toml]
+      - id: check-json
+        types: [json]
+      - id: check-illegal-windows-names
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: v4.2.0
+    hooks:
+      - id: conventional-pre-commit
+        stages: [commit-msg]
+  - repo: https://github.com/Lucas-C/pre-commit-hooks
+    rev: v1.5.5
+    hooks:
+      - id: forbid-crlf
+      - id: remove-crlf
+      - id: forbid-tabs
+      - id: remove-tabs
+  - repo: https://github.com/syntaqx/git-hooks
+    rev: v0.0.18
+    hooks:
+      - id: forbid-binary
+        exclude: ^(tests/data/md/|mlip_models/)
+  - repo: local
+    hooks:
+      - id: py-linting
+        name: py-linting
+        entry: ./lint.sh
+        language: script
+        pass_filenames: false
+        types: [python]
+  # ensures that uv.lock is up to date
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    # uv version.
+    rev: 0.9.4
+    hooks:
+      - id: uv-lock

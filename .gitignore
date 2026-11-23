@@ -1,0 +1,63 @@
+# --------------------- Python modules gitignore --------------------- #
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# Unit test / coverage reports
+.pytest_cache/
+pytest.ini
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+__pypackages__/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+
+# IDEs
+.idea
+.vscode
+*.code-workspace
+.spyderproject
+.spyproject
+.secrets
+
+# Not to commit
+.scripts/
+
+# dotenv environment variables file
+**/.env
+**/.env.test
+
+# ---------------------- OS specific gitignore ----------------------- #
+# Mac OS
+.DS_store
+
+
+# ---------------------Fireworks files--------------------------------#
+block_*/
+launcher_*/
+.firework_logs/*
+
+crystal.toml
+examples/results/

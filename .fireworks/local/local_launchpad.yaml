@@ -1,0 +1,9 @@
+host: localhost
+port: 27017
+name: local_launchpad
+username: 
+password: 
+logdir: null
+Istrm_lvl: DEBUG
+user_indices: []
+wf_user_indices: []

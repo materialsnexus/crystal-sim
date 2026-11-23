@@ -1,0 +1,40 @@
+docs_store:
+  type: MongoStore
+  host: localhost
+  port: 27017
+  username: 
+  password: 
+  database: test_jobflow
+  collection_name: outputs
+
+additional_stores:
+  structures:
+    type: GridFSStore
+    database: test_jobflow
+    collection_name: jobflow_blobs
+    host: localhost
+    port: 27017
+  mlip_relax_task_documents:
+    type: GridFSStore
+    database: test_jobflow
+    collection_name: mlip_relax_task_documents
+    host: localhost
+    port: 27017
+  structure_labelling_task_documents:
+    type: GridFSStore
+    database: test_jobflow
+    collection_name: structure_labelling_task_documents
+    host: localhost
+    port: 27017
+  validation_dataset_trajectories:
+    type: GridFSStore
+    database: test_jobflow
+    collection_name: validation_dataset_trajectories
+    host: localhost
+    port: 27017
+  gpaw_isolated_atom_registry:
+    type: MongoStore
+    database: test_jobflow
+    collection_name: gpaw_isolated_atom_registry
+    host: localhost
+    port: 27017

@@ -1,0 +1,139 @@
+[project]
+name = "crystal"
+version = "0.1.0"
+description = ""
+readme = "README.md"
+requires-python = ">=3.11.9,<3.12.10"
+dependencies = [
+    "fireworks>=2.0.6",
+    "defusedxml>=0.7.1",
+    "pydantic>=2.12.4",
+    "pymatgen>=2025.10.7",
+    "pyyaml>=6.0.3",
+    "tomli>=2.3.0",
+    "numpy<2",
+    "pyxtal>=1.1.2",
+    "jobflow>=0.2.1",
+    "ase>=3.29.0",
+    "matplotlib>=3.10.8",
+    "pymongo>=4.10.1",
+]
+
+[project.scripts]
+crystal = "crystal:main"
+
+[build-system]
+requires = ["uv_build>=0.9.4,<0.10.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "codespell>=2.4.1",
+    "mirakuru>=3.0.1",
+    "mongomock-persistence>=0.0.5",
+    "mypy>=1.18.2",
+    "pre-commit>=4.5.0",
+    "pytest>=9.0.3",
+    "pytest-mongo>=3.2.1",
+    "ruff>=0.14.5",
+    "vulture>=2.14",
+]
+notebooks = [
+    "ipykernel>=7.1.0",
+    "ipywidgets>=8.1.7",
+    "jupyterlab>=4.5.9",
+    "mp-api>=0.45.13",
+    "nbclient>=0.10.2",
+    "py3dmol>=2.5.2",
+]
+gpaw = [
+    "gpaw==26.7.0",
+]
+mlip = [
+    "torch==2.3.0+cu121; sys_platform == 'linux' and platform_machine == 'x86_64'",
+    "torch==2.3.0; sys_platform == 'darwin' and platform_machine == 'arm64'",
+    "matgl>=4.0.3",
+    "maml>=2025.4.3",
+]
+
+[tool.mypy]
+strict = true
+plugins = ["pydantic.mypy"]
+exclude = ["src/crystal/calculators/gpaw/external_runtime/"]
+disable_error_code = ["misc", "import-untyped"]
+ignore_missing_imports = false
+allow_untyped_decorators = true
+warn_unreachable = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+local_partial_types = true
+strict_bytes = true
+
+[tool.ruff]
+extend-exclude = ["src/crystal/calculators/gpaw/external_runtime"]
+
+[tool.ruff.lint]
+extend-select = ["ALL"]
+ignore = [
+    "A005", # shadowing stlib module names
+    "B905", # zip without explicit strict=
+    "D205", # Docstrings formatting
+    "S101", # Assertion errors
+    "S604", # usage of a parameter called 'shell'
+    "TC002", # false alarms on TYPE_CHECKING imports
+    "TC001",
+    "TC003",
+    "TD003",
+    "E501", # line too long
+    "ISC001", # Recommended disable single-line-implicit-string-concatenation
+    "RET501", # unnecessary-return-none
+    "N818", # error-suffix-on-exception-name
+    "ANN401", # flake8-annotations any-type
+    "PLR0911", # Complexity rules, better handled by C901
+    "PLR0912",
+    "PLR0913",
+    "PLR0915",
+    "PLR1711", # useless-return
+    "S603", # subprocess call
+    "FIX", # flake8-fixme
+    "COM812" # Recommended disable missing-trailing-comma
+]
+pydocstyle.convention = "google"
+per-file-ignores = { "tests/*" = ["D", "INP", "PLR2004", "SLF"], "**/scripts/*" = ["INP"], "src/crystal/calculators/gpaw/external_runtime/*" = ["INP"], "jupyter_notebooks/*" = ["T201", "ERA001"] }
+isort.split-on-trailing-comma = false
+isort.known-third-party = ["wandb"]
+
+[tool.ruff.format]
+skip-magic-trailing-comma = true
+
+[tool.codespell]
+skip = ["pyproject.toml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+norecursedirs = [".venv", "venv", ".git", "build", "dist"]
+markers = [
+    "needs_mongodb: marker for tests that need mongodb running",
+    "needs_slurm: marker for tests that need slurm",
+    "needs_third_party_executables: marker for tests that need third party softwares, e.g. QE",
+    "gpaw_for_tests: marker for tests that validate basic GPAW package compatibility using the optional gpaw dependency group",
+    "needs_lfs: marker for tests that require git lfs assets",
+    "slow: marker for end-to-end or slow tests"
+]
+
+[tool.uv]
+extra-build-variables = { gpaw = { CC = "c++" } }
+required-environments = [
+  "sys_platform == 'darwin' and platform_machine == 'arm64'",
+  "sys_platform == 'linux' and platform_machine == 'x86_64'",
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu121"
+url = "https://download.pytorch.org/whl/cu121"
+explicit = true
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cu121", marker = "sys_platform == 'linux' and platform_machine == 'x86_64'" },
+]

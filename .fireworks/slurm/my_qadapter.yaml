@@ -1,0 +1,13 @@
+_fw_name: CommonAdapter
+_fw_q_type: SLURM
+rocket_launch: /path/to/folder/CRYSTAL/.venv/bin/rlaunch -w /path/to/folder/CRYSTAL/.fireworks/slurm/my_fworker.yaml -l /path/to/folder/CRYSTAL/.fireworks/slurm/slurm_launchpad.yaml singleshot
+ntasks: 4
+mem: 10G
+walltime: 00:05:00
+account: null
+job_name: my_firework
+qos: regular
+queue: all
+logdir: /path/to/folder/CRYSTAL/.firework_logs
+pre_rocket: null
+post_rocket: null

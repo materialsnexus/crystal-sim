@@ -1,0 +1,9 @@
+[programs]
+quantum_espresso_dir = "/path/to/folder/q-e/bin/"
+gpaw_env_dir = "/path/to/folder/gpaw/"
+gpaw_setups_dir = "/path/to/folder/gpaw/setups/"
+pseudopotentials_dir = "tests/data"
+mlip_models_dir = "mlip_models"
+isolated_atom_energies_dir = "isolated_atom_energies"
+mpi_environment_setup_script = ""
+chargemol_dir = "/path/to/folder/chargemol"
