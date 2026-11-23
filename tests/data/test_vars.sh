@@ -1,0 +1,1 @@
+export MY_TEST_VAR="hello_from_vars"

@@ -1,0 +1,12 @@
+1
+Lattice="15 0 0 0 15 0 0 0 15" pbc="T T T" Properties=species:S:1:pos:R:3:charges:R:1 energy=-0.2938849603 job_id=job_Li_m1 element=Li magmom_initial=1 gpaw_status=ok
+Li 7.5 7.5 7.5 0
+1
+Lattice="15 0 0 0 15 0 0 0 15" pbc="T T T" Properties=species:S:1:pos:R:3:charges:R:1 energy=-2.095786293 job_id=job_O_m2 element=O magmom_initial=2 gpaw_status=ok
+O 7.5 7.5 7.5 0
+1
+Lattice="15 0 0 0 15 0 0 0 15" pbc="T T T" Properties=species:S:1:pos:R:3:charges:R:1 energy=-0.8542614226 job_id=job_Si_m2 element=Si magmom_initial=2 gpaw_status=ok
+Si 7.5 7.5 7.5 0
+1
+Lattice="15 0 0 0 15 0 0 0 15" pbc="T T T" Properties=species:S:1:pos:R:3:charges:R:1 energy=-3.326836206 job_id=job_Nb_m3 element=Nb magmom_initial=3 gpaw_status=ok
+Nb 7.5 7.5 7.5 0

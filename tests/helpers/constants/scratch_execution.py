@@ -1,0 +1,15 @@
+TEST_SLURM_JOB_ID = "12345"
+TEST_SLURM_NODE_NAME = "nid001"
+TEST_TMPDIR_NODE_NAME = "nid002"
+TEST_RESULT_FILENAME = "calculation-output.json"
+TEST_PARTIAL_RESULT_FILENAME = "partial-output.json"
+TEST_RESULT_TEXT = '{"energy": -1.0}'
+TEST_LOG_TEXT = "GPAW text log"
+TEST_PARTIAL_RESULT_TEXT = '{"partial": true}'
+TEST_FAILURE_MESSAGE = "calculation failed"
+TEST_MANIFEST_FINAL_DIRECTORY_KEY = "final_directory"
+TEST_MANIFEST_SCRATCH_DIRECTORY_KEY = "scratch_directory"
+TEST_MANIFEST_HOSTNAME_KEY = "hostname"
+TEST_MANIFEST_SLURM_JOB_ID_KEY = "slurm_job_id"
+TEST_MANIFEST_SLURM_NODE_NAME_KEY = "slurm_node_name"
+TEST_MANIFEST_STATUS_KEY = "status"
